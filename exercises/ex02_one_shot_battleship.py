@@ -13,13 +13,13 @@ secret_column = int(2)
 
 # asking the player to guess a row, and telling them it is wrong if it is outside the 4 by 4 box
 p_input_row = int(input("Guess a row: "))
-while p_input_row > grid_size:
-    p_input_row = int(input(f"The grid is only 4 by 4. Try again: "))
+while p_input_row > grid_size or p_input_row < 1:
+    p_input_row = int(input("The grid is only 4 by 4. Try again: "))
 
 # asking the player to guess a column, and telling them it is wrong if it is outside the 4 by 4 box
 p_input_column = int(input("Guess a column: "))
-while p_input_column > grid_size:
-    p_input_column = int(input(f"The grid is only 4 by 4. Try again: "))
+while p_input_column > grid_size or p_input_column < 1:
+    p_input_column = int(input("The grid is only 4 by 4. Try again: "))
 
 # Figuring out result based on player guess
 result_box = RED_BOX if p_input_column == secret_column and p_input_row == secret_row else WHITE_BOX

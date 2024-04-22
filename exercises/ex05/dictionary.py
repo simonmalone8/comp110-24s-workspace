@@ -4,11 +4,11 @@
 __author__ = "730476889"
 
 
-def invert(dictionary: dict[str,str]) -> dict[str,str]:
+def invert(dictionary: dict[str, str]) -> dict[str, str]:
     """Inverts the keys and the values."""
-    dictionary1: dict[str,str] = {}
+    dictionary1: dict[str, str] = {}
     for num in dictionary:
-        dictionary1[dictionary1[num]] = num
+        dictionary1[dictionary[num]] = num
     if len(dictionary1) < len(dictionary):
         raise KeyError("Multiple keys are not allowed.")
     return dictionary1
@@ -47,7 +47,7 @@ def alphabetizer(number1: list[str]) -> dict[str, list[str]]:
     empty_dict: dict[str, list[str]] = dict()
     for num in number1:
         alpha: str = num[0].lower()
-        w_list: list [str] = []
+        w_list: list[str] = []
         for num1 in number1:
             if num1[0].lower() == alpha:
                 w_list.append(num1)
@@ -58,10 +58,11 @@ def alphabetizer(number1: list[str]) -> dict[str, list[str]]:
 def update_attendance(number: dict[str, list[str]], date: str, student: str) -> None:
     """Returns an attendance sheet."""
     if date in number:
-        for key in date:
+        for key in number:
             attendance: list[str] = number[key]    
             if key == date:
-                attendance.append(student)
+                if student not in attendance:
+                    attendance.append(student)
                 number[key] = attendance
     else:
         next_day: list[str] = [student]
